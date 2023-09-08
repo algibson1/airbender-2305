@@ -22,8 +22,8 @@ RSpec.describe "Search Index" do
       expect(all(".character_info").count).to eq(25)
 
       # And for each of the members I should see:
-      characters = SearchFacade.new.search("fire+nation")
-      save_and_open_page
+      characters = SearchFacade.new.get_characters("fire+nation")
+
       characters[0..24].each do |character|
         within("#character-#{character.id}") do
           # - The name of the member (and their photo, if they have one)
