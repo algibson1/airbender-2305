@@ -25,7 +25,7 @@ class Character
   end
 
   def affiliations?(affiliations)
-    return "None" if affiliations.empty?
+    return "None" if affiliations.nil? || affiliations.empty?
     affiliations.strip
   end
 end
