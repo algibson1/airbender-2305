@@ -1,7 +1,8 @@
 class SearchFacade 
   def search(query)
     response = service.get_characters(query)
-    response.map { |character_data| Character.new(character_data)}
+    character_data = JSON.parse(response.body, symbolize_names: true)
+    character_data.map { |data| Character.new(data)}
   end
 
   private 
