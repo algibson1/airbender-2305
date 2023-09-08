@@ -9,8 +9,23 @@ class Character
     @id = data[:_id]
     @name = data[:name]
     @photo = data[:photoUrl]
-    @allies = data[:allies].join(", ")
-    @enemies = data[:enemies].join(", ")
-    @affiliations = data[:affiliation]
+    @allies = allies?(data[:allies])
+    @enemies = enemies?(data[:enemies])
+    @affiliations = affiliations?(data[:affiliation])
+  end
+
+  def allies?(allies)
+    return "None" if allies.empty?
+    allies.join(", ").strip
+  end
+
+  def enemies?(enemies)
+    return "None" if enemies.empty?
+    enemies.join(", ").strip
+  end
+
+  def affiliations?(affiliations)
+    return "None" if affiliations.empty?
+    affiliations.strip
   end
 end
