@@ -1,6 +1,5 @@
 class SearchController < ApplicationController
   def index 
-    # require 'pry'; binding.pry
-    @characters = SearchFacade.new.find_members(params[:nation])
+    @characters = SearchFacade.new.search(params[:nation])
   end
 end
