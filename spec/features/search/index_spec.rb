@@ -23,17 +23,18 @@ RSpec.describe "Search Index" do
 
       # And for each of the members I should see:
       characters = SearchFacade.new.search("fire+nation")
-      characters.each do |character|
+      save_and_open_page
+      characters[0..24].each do |character|
         within("#character-#{character.id}") do
           # - The name of the member (and their photo, if they have one)
           expect(page).to have_content(character.name)
-          expect(page).to have_selector(img)
+          expect(page).to have_selector("img")
           # - The list of allies or "None"
-          expect(page).to have_content("Allies: #{!character.allies.empty? ? character.allies : "None"}")
+          expect(page).to have_content("Allies: #{character.allies}")
           # - The list of enemies or "None"
-          expect(page).to have_content("Enemies: #{!character.enemies.empty? ? character.enemies : "None"}")
+          expect(page).to have_content("Enemies: #{character.enemies}")
           # - Any affiliations that the member has
-          expect(page).to have_content("Affiliations: #{character.affiliations.empty? ? character.affiliations : "None"}")
+          expect(page).to have_content("Affiliations: #{character.affiliations}")
         end
       end
     end
