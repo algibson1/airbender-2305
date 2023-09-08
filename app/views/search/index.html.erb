@@ -1,0 +1,11 @@
+<h1>Total Fire Nation Members: <%= @characters.count %></h1>
+
+<% @characters[0..24].each do |character| %>
+  <div id="character-<%= character.id %>" class="character_info">
+    <h3><%= character.name %></h3>
+    <img src=<%= character.photo %>>
+    <p>Allies: <%= character.allies %></p>
+    <p>Enemies: <%= character.enemies %></p>
+    <p>Affiliations: <%= character.affiliations %></p>
+  </div>
+<% end %>
