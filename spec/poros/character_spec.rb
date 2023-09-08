@@ -18,4 +18,17 @@ RSpec.describe Character do
     expect(azula.enemies).to eq("Iroh, Zuko, Kuei, Long Feng, Mai, Ty Lee, Ursa")
     expect(azula.affiliations).to eq("Azula's team (formerly) Dai Li (formerly) Fire Nation Fire Nation Royal Family Fire Warriors Royal Fire Academy for Girls (formerly)")
   end
+
+  it "might have no enemies, allies, or affiliations" do
+    random = Character.new({
+      "_id": "s80453hjggfh5djl",
+      "allies": [],
+      "enemies": [],
+      "name": "Fake",
+    })
+
+      expect(random.allies).to eq("None")
+      expect(random.enemies).to eq("None")
+      expect(random.affiliations).to eq("None")
+  end
 end
