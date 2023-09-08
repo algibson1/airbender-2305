@@ -1,6 +1,11 @@
 require "rails_helper"
 
 RSpec.describe AvatarService do
+  it "connects to api" do
+    response = AvatarService.new.connection
+    expect(response).to be_a(Faraday::Connection)
+  end
+  
   it "returns characters for a given nation" do
     response = AvatarService.new.get_characters("fire+nation")
     expect(response).to be_a(Faraday::Response)
